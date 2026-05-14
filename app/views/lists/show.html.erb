@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>This is the show page</h1>
+  <%= @list.name %>
+  <ul>
+    <%# <% @list.movies.each do |movie| %>
+      <%# <li><%= movie.title %>
+      <% @list.bookmarks.each do |bookmark| %>
+        <li> <%= bookmark.movie.title %> </li>
+        <li> <%= bookmark.id %> </li>
+        <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" } %>
+      <% end %>
+    </div>
