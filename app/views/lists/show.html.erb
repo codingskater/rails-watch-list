@@ -24,9 +24,9 @@
   <div class="card">
     <h2>Add Another Movie</h2>
     <%= simple_form_for [@list, @bookmark] do |f| %>
-      <%= f.association :movie %>
+      <%= f.association :movie, collection: @movies %>
       <%= f.input :comment %>
       <%= f.submit "Add to #{@list.name}", class: 'btn btn-success' %>
     <% end %>
   </div>
-  <%= link_to "Return to Homepage", lists_path %>
+  <%= link_to "Return to Homepage", lists_path, class: 'text-white text-decoration-none' %>
