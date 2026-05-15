@@ -1,19 +1,21 @@
-<div class="container">
-  <h1>This is the show page</h1>
-  <%= @list.name %>
-  <% if @list.photo.attached? %>
-    <%= cl_image_tag @list.photo.key, alt: @list.name, class: 'w-100' %>
-  <% else %>
-    <%= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
-  <% end %>
-  <ul>
-    <%# <% @list.movies.each do |movie| %>
-      <%# <li><%= movie.title %>
-      <% @list.bookmarks.each do |bookmark| %>
-        <li> <%= bookmark.movie.title %> </li>
-        <li> <%= bookmark.comment %> </li>
-        <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" } %>
-      <% end %>
-      <li><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></li>
-      <li><%= link_to "Return to Homepage", lists_path %></li>
-    </div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : 'https://images.pexels.com/photos/7991437/pexels-photo-7991437.jpeg' %>);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+<% if @list.photo.attached? %>
+  <%= cl_image_tag @list.photo.key, alt: @list.name, class: 'w-100' %>
+<% else %>
+  <%= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
+<% end %>
+<ul>
+  <%# <% @list.movies.each do |movie| %>
+    <%# <li><%= movie.title %>
+    <% @list.bookmarks.each do |bookmark| %>
+      <li> <%= bookmark.movie.title %> </li>
+      <li> <%= bookmark.comment %> </li>
+      <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" } %>
+    <% end %>
+    <li><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></li>
+    <li><%= link_to "Return to Homepage", lists_path %></li>
+  </div>
