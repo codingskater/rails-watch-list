@@ -3,19 +3,24 @@
     <h1><%= @list.name %></h1>
   </div>
 </div>
-<% if @list.photo.attached? %>
-  <%= cl_image_tag @list.photo.key, alt: @list.name, class: 'w-100' %>
-<% else %>
-  <%= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
-<% end %>
+<%# if @list.photo.attached? %>
+<%#= cl_image_tag @list.photo.key, alt: @list.name, class: 'w-100' %>
+<%# else %>
+<%#= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
+<%# end %>
 <ul>
-  <%# <% @list.movies.each do |movie| %>
-    <%# <li><%= movie.title %>
+  <div class="cards">
     <% @list.bookmarks.each do |bookmark| %>
-      <li> <%= bookmark.movie.title %> </li>
-      <li> <%= bookmark.comment %> </li>
-      <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" } %>
+      <div class="card">
+        <%= image_tag bookmark.movie.poster_url, alt: "text", class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= bookmark.movie.title %></h5>
+          <p class="card-text"><%= bookmark.comment %></p>
+          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" } %>
+        </div>
+      </div>
     <% end %>
-    <li><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></li>
-    <li><%= link_to "Return to Homepage", lists_path %></li>
   </div>
+  <li><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></li>
+  <li><%= link_to "Return to Homepage", lists_path %></li>
+</div>

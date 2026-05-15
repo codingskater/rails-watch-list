@@ -11,13 +11,13 @@
         <%= link_to list.name, list_path(list), class: 'text-white text-decoration-none' %>
       </div>
     <% end %>
-    <div>
-      <h2>Create a New List</h2>
-      <%= simple_form_for @list do |f| %>
-        <%= f.input :name %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit 'Add', class: 'btn btn-info' %>
-      <% end %>
-    </div>
+  </div>
+  <div>
+    <h2>Create a New List</h2>
+    <%= simple_form_for @list do |f| %>
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit 'Add', class: 'btn btn-info' %>
+    <% end %>
   </div>
 </div>
