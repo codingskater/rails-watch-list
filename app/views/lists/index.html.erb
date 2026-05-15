@@ -1,9 +1,13 @@
 <div class="container">
   <h1>Here's the list</h1>
-  <ul>
+  <div class="cards">
     <% @lists.each do |list| %>
-      <li> <%= list.name %> <%= link_to "The Link", list_path(list) %></li>
+      <%= link_to list_path(list), class: 'text-white text-decoration-none' do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg' %>)">
+          <%= list.name %>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
   <%= link_to "Add a List", new_list_path(@lists) %>
 </div>
