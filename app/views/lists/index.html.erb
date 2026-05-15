@@ -2,7 +2,8 @@
   <h1>Here's the list</h1>
   <ul>
     <% @lists.each do |list| %>
-      <li> <%= list.name %> </li>
+      <li> <%= list.name %> <%= link_to "The Link", list_path(list) %></li>
     <% end %>
   </ul>
+  <%= link_to "Add a List", new_list_path(@lists) %>
 </div>

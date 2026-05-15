@@ -9,4 +9,6 @@
         <li> <%= bookmark.id %> </li>
         <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" } %>
       <% end %>
+      <li><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></li>
+      <li><%= link_to "Return to Homepage", lists_path %></li>
     </div>
