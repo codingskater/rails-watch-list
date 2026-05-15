@@ -26,7 +26,7 @@
     <%= simple_form_for [@list, @bookmark] do |f| %>
       <%= f.association :movie %>
       <%= f.input :comment %>
-      <%= f.submit "Add to List" %>
+      <%= f.submit "Add to #{@list.name}", class: 'btn btn-success' %>
     <% end %>
   </div>
   <%= link_to "Return to Homepage", lists_path %>
