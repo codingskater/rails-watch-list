@@ -21,6 +21,12 @@
       </div>
     <% end %>
   </div>
-  <li><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></li>
-  <li><%= link_to "Return to Homepage", lists_path %></li>
-</div>
+  <div class="card">
+    <h2>Add Another Movie</h2>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie %>
+      <%= f.input :comment %>
+      <%= f.submit "Add to List" %>
+    <% end %>
+  </div>
+  <%= link_to "Return to Homepage", lists_path %>
