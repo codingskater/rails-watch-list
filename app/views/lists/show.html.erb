@@ -1,32 +1,34 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : 'https://images.pexels.com/photos/7991437/pexels-photo-7991437.jpeg' %>);">
-  <div class="container">
-    <h1><%= @list.name %></h1>
+<div class="background">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : 'https://images.pexels.com/photos/7991437/pexels-photo-7991437.jpeg' %>);">
+    <div class="container">
+      <h1><%= @list.name %></h1>
+    </div>
   </div>
-</div>
-<%# if @list.photo.attached? %>
-<%#= cl_image_tag @list.photo.key, alt: @list.name, class: 'w-100' %>
-<%# else %>
-<%#= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
-<%# end %>
-<ul>
-  <div class="cards">
-    <% @list.bookmarks.each do |bookmark| %>
-      <div class="card">
-        <%= image_tag bookmark.movie.poster_url, alt: "text", class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= bookmark.movie.title %></h5>
-          <p class="card-text"><%= bookmark.comment %></p>
-          <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" }, class: 'text-decoration-none' %>
+  <%# if @list.photo.attached? %>
+  <%#= cl_image_tag @list.photo.key, alt: @list.name, class: 'w-100' %>
+  <%# else %>
+  <%#= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
+  <%# end %>
+  <ul>
+    <div class="cards">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card">
+          <%= image_tag bookmark.movie.poster_url, alt: "text", class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= bookmark.movie.title %></h5>
+            <p class="card-text"><%= bookmark.comment %></p>
+            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" }, class: 'text-decoration-none' %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="card">
+      <h2>Add Another Movie</h2>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie, collection: @movies %>
+        <%= f.input :comment %>
+        <%= f.submit "Add to #{@list.name}", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+    <%= link_to "Return to Homepage", lists_path, class: 'text-decoration-none' %>
   </div>
-  <div class="card">
-    <h2>Add Another Movie</h2>
-    <%= simple_form_for [@list, @bookmark] do |f| %>
-      <%= f.association :movie, collection: @movies %>
-      <%= f.input :comment %>
-      <%= f.submit "Add to #{@list.name}", class: 'btn btn-success' %>
-    <% end %>
-  </div>
-  <%= link_to "Return to Homepage", lists_path, class: 'text-decoration-none' %>

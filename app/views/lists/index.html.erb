@@ -1,23 +1,25 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/7991437/pexels-photo-7991437.jpeg);">
-  <div class="container">
-    <h1>The Movie Lister</h1>
-    <p>From watch lists to favorites, organize movies your own way!</p>
+<div class="background">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/7991437/pexels-photo-7991437.jpeg);">
+    <div class="container">
+      <h1>The Movie Lister</h1>
+      <p>From watch lists to favorites, organize movies your own way!</p>
+    </div>
   </div>
-</div>
-<div class="container my-5">
-  <div class="cards">
-    <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg' %>)">
-        <%= link_to list.name, list_path(list), class: 'text-white text-decoration-none' %>
-      </div>
-    <% end %>
-  </div>
-  <div class="card">
-    <h2>Create a New List</h2>
-    <%= simple_form_for @list do |f| %>
-      <%= f.input :name %>
-      <%= f.input :photo, as: :file %>
-      <%= f.submit 'Add', class: 'btn btn-success' %>
-    <% end %>
+  <div class="container my-5">
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg' %>); border: 1px solid white;">
+          <%= link_to list.name, list_path(list), class: 'card-link' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card">
+      <h2>Create a New List</h2>
+      <%= simple_form_for @list do |f| %>
+        <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit 'Add', class: 'btn btn-success' %>
+      <% end %>
+    </div>
   </div>
 </div>
