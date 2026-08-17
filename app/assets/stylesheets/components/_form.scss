@@ -1,0 +1,19 @@
+$input-bg: #f8f9fa;
+$input-border-color: #ced4da;
+$input-focus-border-color: #3b0600;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba(#3b0600, 0.5);
+
+.form-control {
+  background-color: $input-bg;
+  border: 1px solid $input-border-color;
+
+  &:hover {
+    border-color: lighten($input-focus-border-color, 20%);
+    background-color: #fff;
+  }
+
+  &:focus {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+  }
+}

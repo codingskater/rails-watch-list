@@ -30,6 +30,10 @@
   grid-gap: 16px;
 }
 
+.card-body {
+  color: #3b0600;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

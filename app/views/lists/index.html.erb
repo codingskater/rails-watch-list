@@ -13,13 +13,17 @@
         </div>
       <% end %>
     </div>
-    <div class="card">
-      <h2>Create a New List</h2>
-      <%= simple_form_for @list do |f| %>
-        <%= f.input :name %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit 'Add', class: 'btn btn-success' %>
-      <% end %>
+  </div>
+  <div class="container pb-5">
+    <div class="card" style="border: 1px solid white;">
+      <div class="card-body">
+        <h3>Create a New List</h3>
+        <%= simple_form_for @list do |f| %>
+          <%= f.input :name %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit 'Add', class: 'btn btn-success' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
