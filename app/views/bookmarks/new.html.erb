@@ -1,8 +1,12 @@
-<div class="container">
-  <h1>Add a New Movie</h1>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.association :movie, collection: @movies %>
-    <%= f.input :comment %>
-    <%= f.submit "Add to List" %>
-  <% end %>
+<div class="container pb-5">
+  <div class="card" style="border: 1px solid white;">
+    <div class="card-body">
+      <h3>Add a New Movie</h3>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie, collection: @movies %>
+        <%= f.input :comment %>
+        <%= f.submit "Add to List", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -10,25 +10,31 @@
   <%#= image_tag 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg', alt: @list.name %>
   <%# end %>
   <ul>
-    <div class="cards">
-      <% @list.bookmarks.each do |bookmark| %>
-        <div class="card">
-          <%= image_tag bookmark.movie.poster_url, alt: "text", class: "card-img-top" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= bookmark.movie.title %></h5>
-            <p class="card-text"><%= bookmark.comment %></p>
-            <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" }, class: 'text-decoration-none' %>
+    <div class="container my-5">
+      <div class="cards">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="card">
+            <%= image_tag bookmark.movie.poster_url, alt: "text", class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= bookmark.movie.title %></h5>
+              <p class="card-text"><%= bookmark.comment %></p>
+              <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Delete the movie?" }, class: 'btn btn-warning text-decoration-none' %>
+            </div>
           </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="container pb-5">
+      <div class="card" style="border: 1px solid white;">
+        <div class="card-body">
+          <h3>Add a New Movie</h3>
+          <%= simple_form_for [@list, @bookmark] do |f| %>
+            <%= f.association :movie, collection: @movies %>
+            <%= f.input :comment %>
+            <%= f.submit "Add to List", class: 'btn btn-success' %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-    <div class="card">
-      <h2>Add Another Movie</h2>
-      <%= simple_form_for [@list, @bookmark] do |f| %>
-        <%= f.association :movie, collection: @movies %>
-        <%= f.input :comment %>
-        <%= f.submit "Add to #{@list.name}", class: 'btn btn-success' %>
-      <% end %>
-    </div>
-    <%= link_to "Return to Homepage", lists_path, class: 'text-decoration-none' %>
+    <%= link_to "Return to Homepage", lists_path, class: 'btn btn-success text-decoration-none' %>
   </div>
