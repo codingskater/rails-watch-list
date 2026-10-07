@@ -2,6 +2,8 @@
 
 A Rails application for organizing movie watch lists.
 
+App: https://watch-list-coding-skater-3363ce5d5852.herokuapp.com/
+
 ## Requirements
 
 - Ruby 3.3.5 (see `.ruby-version`)
